@@ -10,20 +10,20 @@ public class IO {
     private static final XboxController primary = new XboxController(0);
     private static final StadiaController secondary = new StadiaController(1);
 
-    private final HashMap<Supplier<Double>, Controls> controlsJoystick = new HashMap<>();
-    private final HashMap<Supplier<Boolean>, Controls> controlsButtons = new HashMap<>();
+    private static final HashMap<Supplier<Double>, Controls> controlsJoystick = new HashMap<>();
+    private static final HashMap<Supplier<Boolean>, Controls> controlsButtons = new HashMap<>();
 
     public static void Initialize()
     {
 
     }
 
-    public Supplier<Double> getJoystickValue(Controls control)
+    public static Supplier<Double> getJoystickValue(Controls control)
     {
         return null;
     }
 
-    public Supplier<Boolean> getButtonValue(Controls control)
+    public static Supplier<Boolean> getButtonValue(Controls control)
     {
         return null;
     }
