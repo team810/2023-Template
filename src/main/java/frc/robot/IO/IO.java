@@ -10,21 +10,30 @@ public class IO {
     private static final XboxController primary = new XboxController(0);
     private static final StadiaController secondary = new StadiaController(1);
 
-    private static final HashMap<Supplier<Double>, Controls> controlsJoystick = new HashMap<>();
-    private static final HashMap<Supplier<Boolean>, Controls> controlsButtons = new HashMap<>();
+    private static final HashMap<Controls ,Supplier<Double>> controlsJoystick = new HashMap<>();
+    private static final HashMap<Controls ,Supplier<Boolean>> controlsButtons = new HashMap<>();
 
     public static void Initialize()
     {
-
+        controlsJoystick.put(Controls.drive_x, primary::getLeftX);
+        controlsJoystick.put(Controls.drive_y, primary::getLeftY);
+        controlsJoystick.put(Controls.drive_theta, primary::getRightX);
     }
 
-    public static Supplier<Double> getJoystickValue(Controls control)
+    /**
+     * @param key The key specifies what control you want.
+     * @return This will return a supplier for current value of the joystick input.
+     */
+    public static Supplier<Double> getJoystickValue(Controls key)
     {
-        return null;
+        return controlsJoystick.get(key);
     }
-
-    public static Supplier<Boolean> getButtonValue(Controls control)
+    /**
+     * @param key The key specifies what control you want.
+     * @return This will return a supplier for current value of the button input.
+     */
+    public static Supplier<Boolean> getButtonValue(Controls key)
     {
-        return null;
+        return controlsButtons.get(key);
     }
 }
